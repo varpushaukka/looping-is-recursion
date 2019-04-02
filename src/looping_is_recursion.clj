@@ -23,16 +23,20 @@
       ))))
 
 (defn find-first-index [pred a-seq]
-    (loop [acc 0 
-           n a-seq]
-      (if (empty? a-seq)
-        nil
-        (if (= pred (first n))
-          acc
-          (recur (inc acc) (rest a-seq))))))
+ ;;   (loop [acc 0 
+ ;;          n a-seq]
+ ;;     (cond 
+ ;;       (empty? n) nil
+ ;;       (= pred (first n)) acc
+ ;;       :else (recur (inc acc) (rest a-seq)))))
+  )
 
 (defn avg [a-seq]
-  -1)
+  (loop [acc 0 l a-seq]
+    (if (empty? l) 
+      (/ acc (count a-seq))
+      (recur (+ acc (first l)) (rest l))
+      )))
 
 (defn parity [a-seq]
   ":(")
