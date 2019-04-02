@@ -23,7 +23,13 @@
       ))))
 
 (defn find-first-index [pred a-seq]
-  ":(")
+    (loop [acc 0 
+           n a-seq]
+      (if (empty? a-seq)
+        nil
+        (if (= pred (first n))
+          acc
+          (recur (inc acc) (rest a-seq))))))
 
 (defn avg [a-seq]
   -1)
