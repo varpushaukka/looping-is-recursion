@@ -23,23 +23,33 @@
       ))))
 
 (defn find-first-index [pred a-seq]
- ;;   (loop [acc 0 
- ;;          n a-seq]
- ;;     (cond 
- ;;       (empty? n) nil
- ;;       (= pred (first n)) acc
- ;;       :else (recur (inc acc) (rest a-seq)))))
-  )
+  (loop [acc 0
+         n (first a-seq)
+         list a-seq]
+    (cond
+      (empty? list) nil
+      (pred n) acc
+      :else (recur (inc acc) (second list) (rest list))))
+    )
+  
 
 (defn avg [a-seq]
   (loop [acc 0 l a-seq]
     (if (empty? l) 
       (/ acc (count a-seq))
       (recur (+ acc (first l)) (rest l))
-      )))
+  )))
 
+ 
 (defn parity [a-seq]
-  ":(")
+  (loop [a-set (set a-seq)
+         result []
+         n (first a-set)]
+    (cond
+      (empty? a-set) result
+      (odd? (count (filter #(= n %) a-seq))) (recur (rest a-set) (conj result n) (second a-set))
+      :else (recur (rest a-set) result (second a-set))))
+  )
 
 (defn fast-fibo [n]
   ":(")
