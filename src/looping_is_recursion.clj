@@ -60,12 +60,11 @@
       (recur (+ i i1) i (dec m)))))
 
 (defn cut-at-repetition [a-seq]
-  (loop [a-set (set a-seq)
+  (loop [a-set a-seq
+         b-set #{}
          n (first a-set)
          i 0]
     (if
-      (empty? a-set) (take i a-seq)
-      (recur (rest a-set) (second a-set) (inc i)))))
-
-
+     (contains? b-set n) (take i a-seq)
+     (recur (rest a-set) (conj b-set n) (second a-set) (inc i)))))
 
