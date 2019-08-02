@@ -52,8 +52,20 @@
   )
 
 (defn fast-fibo [n]
-  ":(")
+  (loop [i 1
+         i1 0
+         m n]
+    (if (zero? m)
+      i1
+      (recur (+ i i1) i (dec m)))))
 
 (defn cut-at-repetition [a-seq]
-  [":("])
+  (loop [a-set (set a-seq)
+         n (first a-set)
+         i 0]
+    (if
+      (empty? a-set) (take i a-seq)
+      (recur (rest a-set) (second a-set) (inc i)))))
+
+
 
